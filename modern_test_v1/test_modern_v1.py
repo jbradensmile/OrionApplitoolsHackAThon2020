@@ -13,7 +13,8 @@ from applitools.selenium import (
 import os
 
 api_key = "41aE6zclkZw5vvvU98XUOrCn9RftiKdfTUamMosLTNOY110"
-viewport = {'width': 992, 'height': 1080}
+desktop_viewport = {"width": 1200, "height": 700}
+tablet_viewport = {"width":768, "height": 700}
 
 
 def set_up(eyes):
@@ -27,11 +28,13 @@ def set_up(eyes):
     # Add browsers with different viewports
     # Add mobile emulation devices in Portrait mode
     (
-        eyes.configure.add_browser(viewport.get("width"), viewport.get("height"), BrowserType.CHROME)
-        .add_browser(viewport.get("width"), viewport.get("height"), BrowserType.FIREFOX)
-        .add_browser(viewport.get("width"), viewport.get("height"), BrowserType.EDGE) # Edge will be depricated, but EDGE_CHROMIUM isn't valid yet.
+        eyes.configure.add_browser(desktop_viewport.get("width"), desktop_viewport.get("height"), BrowserType.CHROME)
+        .add_browser(desktop_viewport.get("width"), desktop_viewport.get("height"), BrowserType.FIREFOX)
+        .add_browser(desktop_viewport.get("width"), desktop_viewport.get("height"), BrowserType.EDGE) # Edge will be depricated, but EDGE_CHROMIUM isn't valid yet.
+        .add_browser(tablet_viewport.get("width"), tablet_viewport.get("height"), BrowserType.CHROME)
+        .add_browser(tablet_viewport.get("width"), tablet_viewport.get("height"), BrowserType.FIREFOX)
+        .add_browser(tablet_viewport.get("width"), tablet_viewport.get("height"), BrowserType.EDGE)
         .add_device_emulation(DeviceName.iPhone_X) # Viewport doesn't match rules.
-        .add_device_emulation(DeviceName.iPad_Pro) # Viewport doesn't match rules.
     )
 
 
@@ -44,7 +47,7 @@ def ultra_fast_test(web_driver, eyes):
         # Call Open on eyes to initialize a test session
         print("Initializing window for session.")
         eyes.open(
-            web_driver, "Demo App", "Hackathon 2020 Modern v1", {"width": 1200, "height": 720}
+            web_driver, "Demo App", "Hackathon 2020 Modern v1", {"width": 1200, "height": 700}
         )
 
         # Find an element on the page and click it
