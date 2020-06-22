@@ -13,9 +13,14 @@ from applitools.selenium import (
 import os
 
 api_key = "41aE6zclkZw5vvvU98XUOrCn9RftiKdfTUamMosLTNOY110"
+batch_name = "UFG Hackathon"
+concurrency = 10
 desktop_viewport = {"width": 1200, "height": 700}
+eyes_viewport = {"width": 800, "height": 600}
 tablet_viewport = {"width":768, "height": 700}
-
+test_name = "Task 1"
+v1_url = "https://demo.applitools.com/gridHackathonV1.html"
+v2_url = "https://demo.applitools.com/gridHackathonV2.html"
 
 def set_up(eyes):
 
@@ -23,7 +28,7 @@ def set_up(eyes):
     eyes.configure.set_api_key(api_key)
 
     # create a new batch info instance and set it to the configuration
-    eyes.configure.set_batch(BatchInfo("Modern v1"))
+    eyes.configure.set_batch(BatchInfo(batch_name))
 
     # Add browsers with different viewports
     # Add mobile emulation devices in Portrait mode
@@ -41,22 +46,18 @@ def set_up(eyes):
 def ultra_fast_test(web_driver, eyes):
     try:
         # Navigate to the url we want to test
-        print("Navigating to v1 site.")
-        web_driver.get("https://demo.applitools.com/gridHackathonV1.html")
+        print("Navigating to the site.")
+        web_driver.get(v1_url)
 
         # Call Open on eyes to initialize a test session
         print("Initializing window for session.")
         eyes.open(
-            web_driver, "Demo App", "Hackathon 2020 Modern v1", {"width": 1200, "height": 700}
+            web_driver, "Demo App", test_name, eyes_viewport
         )
 
-        # Find an element on the page and click it
-        print("Clicking the Home link.")
-        web_driver.find_element_by_id("A__showsubmen__23").click()
-
         # Check the app page
-        print("Taking a screenshot of the page.")
-        eyes.check("", Target.window().fully().with_name("https://demo.applitools.com/gridHackathonV1.html"))
+        print("Building the HTML to send to UFG.")
+        eyes.check("Cross-Device Elements Test", Target.window().fully().with_name(v1_url))
 
         # Call Close on eyes to let the server know it should display the results
         eyes.close_async()
@@ -70,7 +71,7 @@ def tear_down(web_driver, runner):
     print("Closing the browser.")
     web_driver.close()
 
-    print("Getting test results and creating Batch in Dashboard")
+    print("Running UFG and creating Batch in Dashboard")
     # we pass false to this method to suppress the exception that is thrown if we
     # find visual differences
     all_test_results = runner.get_all_test_results(False)
@@ -80,7 +81,7 @@ def tear_down(web_driver, runner):
 web_driver = Chrome(ChromeDriverManager().install())
 
 # Create a runner with concurrency of 1
-runner = VisualGridRunner(1)
+runner = VisualGridRunner(concurrency)
 
 # Create Eyes object with the runner, meaning it'll be a Visual Grid eyes.
 eyes = Eyes(runner)
