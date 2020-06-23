@@ -22,7 +22,7 @@ concurrency = 10
 desktop_viewport = {"width": 1200, "height": 700}
 eyes_viewport = {"width": 800, "height": 600}
 tablet_viewport = {"width":768, "height": 700}
-test_name = "Task 2"
+test_name = "Task 3"
 v1_url = "https://demo.applitools.com/gridHackathonV1.html"
 v2_url = "https://demo.applitools.com/gridHackathonV2.html"
 
@@ -53,10 +53,10 @@ def ultra_fast_test(web_driver, eyes):
         print("Navigating to the site.")
         web_driver.get(v1_url)
 
-        # Task 2 specific elements
+        # Task 3 specific elements
         open_filter = web_driver.find_element_by_id('A__openfilter__206')
         black_filter_checkbox = web_driver.find_element_by_id('SPAN__checkmark__107')
-        filter_button = web_driver.find_element_by_id('filterBtn')  
+        filter_button = web_driver.find_element_by_id('filterBtn') 
 
         # Filtering for Black shoe products
         print("Clicking open filter button.")
@@ -70,6 +70,11 @@ def ultra_fast_test(web_driver, eyes):
         if filter_button:
             web_driver.execute_script("arguments[0].click();", filter_button)
 
+        #Click on black shoe image
+        print("Clicking on the first black shoe product.")
+        product_image = web_driver.find_element_by_id('IMG__imgfluid__215') # Defining here to get passed a 'stale element' issue.
+        product_image.click()
+
         # Call Open on eyes to initialize a test session
         print("Initializing window for session.")
         eyes.open(
@@ -78,7 +83,7 @@ def ultra_fast_test(web_driver, eyes):
 
         # Check the app page
         print("Building the HTML to send to UFG.")
-        eyes.check("Filter Results", Target.window().region('#product_grid'))
+        eyes.check("Product Details test", Target.window().fully().with_name(v1_url))
 
         # Call Close on eyes to let the server know it should display the results
         eyes.close_async()
