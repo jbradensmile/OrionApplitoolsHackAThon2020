@@ -24,7 +24,6 @@ eyes_viewport = {"width": 800, "height": 600}
 tablet_viewport = {"width":768, "height": 700}
 test_name = "Task 2"
 v1_url = "https://demo.applitools.com/gridHackathonV1.html"
-v2_url = "https://demo.applitools.com/gridHackathonV2.html"
 
 def set_up(eyes):
 
