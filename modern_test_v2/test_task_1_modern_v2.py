@@ -19,7 +19,7 @@ desktop_viewport = {"width": 1200, "height": 700}
 eyes_viewport = {"width": 800, "height": 600}
 tablet_viewport = {"width":768, "height": 700}
 test_name = "Task 1"
-v1_url = "https://demo.applitools.com/gridHackathonV1.html"
+v2_url = "https://demo.applitools.com/gridHackathonV2.html"
 
 def set_up(eyes):
 
@@ -46,7 +46,7 @@ def ultra_fast_test(web_driver, eyes):
     try:
         # Navigate to the url we want to test
         print("Navigating to the site.")
-        web_driver.get(v1_url)
+        web_driver.get(v2_url)
 
         # Call Open on eyes to initialize a test session
         print("Initializing window for session.")
@@ -56,7 +56,7 @@ def ultra_fast_test(web_driver, eyes):
 
         # Check the app page
         print("Building the HTML to send to UFG.")
-        eyes.check("Cross-Device Elements Test", Target.window().fully().with_name(v1_url))
+        eyes.check("Cross-Device Elements Test", Target.window().fully().with_name(v2_url))
 
         # Call Close on eyes to let the server know it should display the results
         eyes.close_async()
