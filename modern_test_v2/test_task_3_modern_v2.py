@@ -53,7 +53,7 @@ def ultra_fast_test(web_driver, eyes):
         web_driver.get(v2_url)
 
         # Task 3 specific elements
-        open_filter = web_driver.find_element_by_id('A__openfilter__206')
+        open_filter = web_driver.find_element_by_id('A__openfilter__207')
         black_filter_checkbox = web_driver.find_element_by_id('SPAN__checkmark__107')
         filter_button = web_driver.find_element_by_id('filterBtn') 
 
@@ -71,7 +71,7 @@ def ultra_fast_test(web_driver, eyes):
 
         #Click on black shoe image
         print("Clicking on the first black shoe product.")
-        product_image = web_driver.find_element_by_id('IMG__imgfluid__215') # Defining here to get passed a 'stale element' issue.
+        product_image = web_driver.find_element_by_id('product_1') # Defining here to get passed a 'stale element' issue.
         product_image.click()
 
         # Call Open on eyes to initialize a test session

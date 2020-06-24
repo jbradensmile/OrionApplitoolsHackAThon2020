@@ -53,7 +53,7 @@ def ultra_fast_test(web_driver, eyes):
         web_driver.get(v2_url)
 
         # Task 2 specific elements
-        open_filter = web_driver.find_element_by_id('A__openfilter__206')
+        open_filter = web_driver.find_element_by_id('A__openfilter__207')
         black_filter_checkbox = web_driver.find_element_by_id('SPAN__checkmark__107')
         filter_button = web_driver.find_element_by_id('filterBtn')  
 
