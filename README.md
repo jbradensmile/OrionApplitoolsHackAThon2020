@@ -13,7 +13,7 @@
 * Once in the folder you wish to execute from, in your terminal, execute the command: `python [name of file]` + tab.
 
     > Example:
-        > `python test_task_1` + tab
+         `python test_task_1` + tab
 
 * Project will execute and you'll see print messages in your terminal, walking you through where the project is in the code.
 
