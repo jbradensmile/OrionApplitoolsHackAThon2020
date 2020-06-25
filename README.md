@@ -6,7 +6,7 @@
 
 * In your favorite IDE, that supports python, open to the root project folder.
 
-* From the root, in your terminal, execute the command: 'pip install -r requirements.txt'.
+* From the root, in your terminal, execute the command: `pip install -r requirements.txt`.
 
 * Once all of the requirements have been satisfied, navigate to the folder you wish to execute from. 
 
