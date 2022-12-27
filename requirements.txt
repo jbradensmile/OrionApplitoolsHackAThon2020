@@ -15,7 +15,7 @@ Pillow == 6.2.2
 pip == 20.1.1
 requests == 2.23.0
 selenium == 3.141.0
-setuptools == 47.1.1
+setuptools == 65.5.1
 six == 1.15.0
 tinycss2 == 0.6.1
 transitions == 0.6.9
